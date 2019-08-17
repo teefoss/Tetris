@@ -9,6 +9,8 @@
 #ifndef tetramino_h
 #define tetramino_h
 
+#include <stdbool.h>
+
 // tetramino shape data stored in a 4 * 4 grid
 #define DATA_SIZE   4
 
@@ -21,7 +23,11 @@ typedef enum
     TET_S,
     TET_Z,
     TET_T,
-    TET_COUNT
+    TET_COUNT,
+    
+    TET_BORDER,
+    TET_DEAD,
+    TET_TOTAL
 } tettype_t;
 
 typedef enum
@@ -38,6 +44,8 @@ typedef struct
     int         x, y; // tile position
     tettype_t   type;
     rotation_t  rotation;
+    bool        spawn;
+    bool        slide;
 } tetramino_t;
 
 extern char shapes[TET_COUNT][R_COUNT][DATA_SIZE][DATA_SIZE];
